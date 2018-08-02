@@ -1,0 +1,68 @@
+<div>
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Run Reports</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+                <div>
+                    <div ng-repeat="reportParam in vm.reportParams">
+                        <label>{{reportParam.label}}</label>
+
+                        <div>
+                            <md-select id="{{reportParam.inputName}}" ng-model="formData[reportParam.inputName]" ng-change="getDependencies(reportParam)" placeholder="--selectOption--" required>
+                                <md-options ng-repeat="selectOption in reportParam.selectOptions" value="{{selectOption.id}}"></md-options>
+                            </md-select>
+                        </div>
+                    </div>
+                    <div ng-repeat="reportTextParam in reportTextParams">
+                        <label>{{reportTextParam.label}}</label>
+
+                        <div>
+                            <input id="{{reportTextParam.inputName}}" type="text" ng-model="formData[reportTextParam.inputName]" required>
+                        </div>
+                    </div>
+                    <div ng-repeat="reportDateParam in reportDateParams">
+                        <label>{{reportDateParam.label}}</label>
+
+                        <div>
+                            <input id="{{reportDateParam.inputName}}" type="text" datepicker-pop="yyyy-MM-dd"
+                                   ng-model="formData[reportDateParam.inputName]" is-open="'opened'+$index" min="minDate"
+                                   max="'2020-06-22'" date-disabled="disabled(date, mode)"  class="form-control" required>
+                        </div>
+                    </div>
+                    <div ng-show="reportType == 'Pentaho'">
+                        <label>Output Type</label>
+
+                        <div>
+                            <md-select ng-model="formData.outputType">
+                                <md-option value="HTML">Show Report</md-option>
+                                <md-option value="XLS">Excel</md-option>
+                                <md-option value="XLSX">Excel2</md-option>
+                                <md-option value="CSV">CSV</md-option>
+                                <md-option value="PDF">PDF</md-option>
+                            </md-select>
+                        </div>
+                    </div>
+                    <div>
+                        <label>Decimal Place</label>
+                        <div>
+                            <md-select id="decimalsChoice" ng-model="decimalChoice">
+                                <md-option value="4">4</md-option>
+                                <md-option value="3">3</md-option>
+                                <md-option value="2">2</md-option>
+                                <md-option value="1">1</md-option>
+                                <md-option value="0">0</md-option>
+                            </md-select>
+                        </div>
+                    </div>
+                </div>
+            <div ng-hide="hideTable">
+                <div ng-show="reportType == 'Table'">
+                    <md-button ></md-button>
+                </div>
+            </div>
+        </md-card-content>
+    </md-card>
+</div>

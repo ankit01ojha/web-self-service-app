@@ -179,6 +179,18 @@
                     controller: 'LoanApplicationCtrl',
                     controllerAs: 'vm'
                 })
+                .state('app.reports',{
+                    url: '/reports',
+                    templateUrl: 'src/reports/view_reports/view_reports.html',
+                    controller: 'ViewReportsCtrl',
+                    controllerAs: 'vm'
+                })
+                .state('app.run_report',{
+                    url: '/run_report/:name',
+                    templateUrl: 'src/reports/run_reports/run_reports.html',
+                    controller: 'RunReportCtrl',
+                    controllerAs: 'vm'
+                })
                 .state('login', {
                     url: '/login',
                     templateUrl: 'src/authentication/login/login.html',
